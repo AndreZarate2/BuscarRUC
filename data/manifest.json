@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "actualizado": null,
+  "sunat": {
+    "disponible": false,
+    "registros_total": 0,
+    "ruc20": 0,
+    "fuente": "https://www.sunat.gob.pe/descargaPRR/mrc137_padron_reducido.html"
+  },
+  "pcm": {
+    "disponible": false,
+    "registros": 0
+  },
+  "ubigeos": {
+    "disponible": false,
+    "distritos": 0
+  },
+  "departamentos": {},
+  "avisos": [
+    "Catalogo inicial de proyectos especiales. Ejecutar la accion de GitHub para habilitar la consulta masiva SUNAT."
+  ]
+}

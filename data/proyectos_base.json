@@ -1,0 +1,490 @@
+[
+  {
+    "ruc": "20519923182",
+    "nombre": "PROYECTO ESPECIAL REGIONAL PASTO GRANDE",
+    "departamento": "MOQUEGUA",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PERPG",
+      "PASTO GRANDE"
+    ]
+  },
+  {
+    "ruc": "20170639520",
+    "nombre": "PROYECTO ESPECIAL AFIANZAMIENTO Y AMPLIACION DE LOS RECURSOS HIDRICOS DE TACNA",
+    "departamento": "TACNA",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PET",
+      "PROYECTO ESPECIAL TACNA",
+      "RECURSOS HIDRICOS TACNA"
+    ]
+  },
+  {
+    "ruc": "20148346055",
+    "nombre": "PROYECTO ESPECIAL OLMOS TINAJONES",
+    "departamento": "LAMBAYEQUE",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEOT",
+      "OLMOS TINAJONES"
+    ]
+  },
+  {
+    "ruc": "20154477536",
+    "nombre": "PROYECTO ESPECIAL CHIRA PIURA",
+    "departamento": "PIURA",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww3.sunat.gob.pe/descarga/BueCont/BueCont1940.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PECHP",
+      "CHIRA PIURA"
+    ]
+  },
+  {
+    "ruc": "20525662404",
+    "nombre": "PROYECTO ESPECIAL DE IRRIGACION E HIDROENERGETICO DEL ALTO PIURA",
+    "departamento": "PIURA",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://www.sunat.gob.pe/orientacion/coaEstado/entidadesInformantesCOA-Estado.pdf",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEIHAP",
+      "ALTO PIURA"
+    ]
+  },
+  {
+    "ruc": "20278885420",
+    "nombre": "PROYECTO ESPECIAL TAMBO CCARACOCHA",
+    "departamento": "ICA",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet290.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PETACC",
+      "TAMBO CCARACOCHA"
+    ]
+  },
+  {
+    "ruc": "20156058719",
+    "nombre": "PROYECTO ESPECIAL CHAVIMOCHIC",
+    "departamento": "LA LIBERTAD",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "CHAVIMOCHIC",
+      "PECH"
+    ]
+  },
+  {
+    "ruc": "20164359701",
+    "nombre": "PROYECTO ESPECIAL CHINECAS",
+    "departamento": "ANCASH",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "CHINECAS"
+    ]
+  },
+  {
+    "ruc": "20154446738",
+    "nombre": "PROYECTO ESPECIAL BINACIONAL PUYANGO TUMBES",
+    "departamento": "TUMBES",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEBPT",
+      "PUYANGO TUMBES"
+    ]
+  },
+  {
+    "ruc": "20172237127",
+    "nombre": "PROYECTO ESPECIAL ALTO MAYO",
+    "departamento": "SAN MARTIN",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "ALTO MAYO"
+    ]
+  },
+  {
+    "ruc": "20207736261",
+    "nombre": "PROYECTO ESPECIAL BINACIONAL DE DESARROLLO INTEGRAL DE LA CUENCA DEL RIO PUTUMAYO",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "RIO PUTUMAYO",
+      "BINACIONAL PUTUMAYO"
+    ]
+  },
+  {
+    "ruc": "20162117379",
+    "nombre": "PROYECTO ESPECIAL BINACIONAL LAGO TITICACA",
+    "departamento": "PUNO",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PELT",
+      "LAGO TITICACA"
+    ]
+  },
+  {
+    "ruc": "20503503639",
+    "nombre": "PROYECTO ESPECIAL DE INFRAESTRUCTURA DE TRANSPORTE NACIONAL - PROVIAS NACIONAL",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PROVIAS NACIONAL"
+    ]
+  },
+  {
+    "ruc": "20606567694",
+    "nombre": "PROYECTO ESPECIAL DE INVERSION PUBLICA ESCUELAS BICENTENARIO",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "ESCUELAS BICENTENARIO"
+    ]
+  },
+  {
+    "ruc": "20148168955",
+    "nombre": "PROYECTO ESPECIAL HUALLAGA CENTRAL Y BAJO MAYO",
+    "departamento": "SAN MARTIN",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "HUALLAGA CENTRAL Y BAJO MAYO"
+    ]
+  },
+  {
+    "ruc": "20187384142",
+    "nombre": "PROYECTO ESPECIAL JAEN SAN IGNACIO BAGUA",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "JAEN SAN IGNACIO BAGUA",
+      "PEJSIB"
+    ]
+  },
+  {
+    "ruc": "20156046974",
+    "nombre": "PROYECTO ESPECIAL JEQUETEPEQUE ZANA",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "JEQUETEPEQUE ZANA",
+      "PEJEZA"
+    ]
+  },
+  {
+    "ruc": "20600378059",
+    "nombre": "PROYECTO ESPECIAL LEGADO",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "LEGADO"
+    ]
+  },
+  {
+    "ruc": "20143122850",
+    "nombre": "PROYECTO ESPECIAL SIERRA CENTRO SUR",
+    "departamento": "AYACUCHO",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet290.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "SIERRA CENTRO SUR"
+    ]
+  },
+  {
+    "ruc": "20162554167",
+    "nombre": "PROYECTO ESPECIAL MAJES SIGUAS - AUTODEMA",
+    "departamento": "AREQUIPA",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet28.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "AUTODEMA",
+      "AUTORIDAD AUTONOMA DE MAJES",
+      "MAJES SIGUAS"
+    ]
+  },
+  {
+    "ruc": "20159311598",
+    "nombre": "PROYECTO ESPECIAL REGIONAL PLAN COPESCO",
+    "departamento": "CUSCO",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet280.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PLAN COPESCO",
+      "COPESCO"
+    ]
+  },
+  {
+    "ruc": "20170258305",
+    "nombre": "PROYECTO ESPECIAL MADRE DE DIOS",
+    "departamento": "MADRE DE DIOS",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://www.gob.pe/institucion/pemd/informes-publicaciones/3660953-reglamento-interno-de-trabajo-rit-2016-pemd",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEMD",
+      "PROYECTO MADRE DE DIOS"
+    ]
+  },
+  {
+    "ruc": "20204060623",
+    "nombre": "PROYECTO ESPECIAL PICHIS PALCAZU",
+    "departamento": "JUNIN",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://www.pepp.gob.pe/descargas/pvpc_covid_pepp.pdf",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEPP",
+      "PICHIS PALCAZU"
+    ]
+  },
+  {
+    "ruc": "20202348654",
+    "nombre": "PROYECTO ESPECIAL ALTO HUALLAGA",
+    "departamento": "HUANUCO",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://www.ana.gob.pe/sites/default/files/normatividad/files/RD%20564-2024.pdf",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEAH",
+      "ALTO HUALLAGA"
+    ]
+  },
+  {
+    "ruc": "20572268200",
+    "nombre": "PROYECTO ESPECIAL DATEM DEL MARANON ALTO AMAZONAS LORETO CONDORCANQUI",
+    "departamento": "LORETO",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://www.gob.pe/institucion/pedamaalc/informes-publicaciones/7170075-convenio-marco-de-cooperacion-interinstitucional-entre-el-pedamaalc-y-la-municipalidad-distrital-de-pastaza",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PEDAMAALC",
+      "DATEM DEL MARANON"
+    ]
+  },
+  {
+    "ruc": "20556512303",
+    "nombre": "PROYECTOS ESPECIALES DEL PLIEGO 003 - MINISTERIO DE CULTURA",
+    "departamento": "",
+    "provincia": "",
+    "distrito": "",
+    "ubigeo": "",
+    "direccion": "",
+    "estado": "",
+    "condicion": "",
+    "tipo": "Proyectos especiales",
+    "fuente": "https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet290.html",
+    "identificacion": "RUC documentado; sin contraste SUNAT en esta web",
+    "observaciones": "Ubicacion departamental referencial; no equivale al domicilio fiscal.",
+    "alias": [
+      "PROYECTOS ESPECIALES CULTURA"
+    ]
+  }
+]
