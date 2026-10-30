@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Buscador de RUC de empresas, entidades públicas y proyectos especiales de Perú, por ubicación geográfica, con exportación a Excel." />
+  <meta name="theme-color" content="#11263a" />
+  <title>Buscador RUC Perú | Entidades, Empresas y Proyectos</title>
+  <style>
+    :root{--navy:#14283c;--navy2:#203c55;--teal:#128d86;--teallight:#e7f7f3;--ink:#1d2d3b;--muted:#64768a;--line:#dce5eb;--bg:#f4f7fa;--paper:#fff;--gold:#cf8c22;--bad:#b93d3d;--radius:13px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}
+    button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.5}a{color:#086d82}
+    .top{background:linear-gradient(118deg,#102638,#1c3e55);color:white;padding:26px 0 56px;position:relative;overflow:hidden}.top:after{content:"";position:absolute;border-radius:50%;width:460px;height:460px;background:#ffffff07;right:-150px;top:-250px;pointer-events:none}
+    .wrap{width:min(1240px,calc(100% - 36px));margin:0 auto}.brand{display:flex;gap:11px;align-items:center;font-weight:800;letter-spacing:.05em;font-size:13px}.brandmark{width:35px;height:35px;background:#1b9b92;border-radius:9px;display:grid;place-items:center;font-weight:850;font-size:17px;letter-spacing:-.08em}
+    .eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:750;color:#a9ddd8;margin:27px 0 7px}.top h1{margin:0 0 11px;font-size:clamp(27px,3.4vw,41px);line-height:1.17;letter-spacing:-.045em}.top p{color:#d1e1e8;max-width:720px;font-size:15px;margin:0}.topinner{display:flex;justify-content:space-between;align-items:end;gap:30px}.status{color:#e2eef3;min-width:190px;text-align:right;font-size:12px;max-width:300px}.status strong{display:block;color:#fff;font-size:14px;margin-bottom:4px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#efb544;margin-right:7px}.dot.ok{background:#46cfad}
+    main{margin-top:-31px;position:relative;z-index:2;padding-bottom:70px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 4px 22px rgba(15,36,58,.06);margin-bottom:19px}.formpanel{padding:24px}.sectiontitle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.sectiontitle h2{font-size:17px;margin:0;letter-spacing:-.02em}.sectiontitle p{color:var(--muted);margin:3px 0 0;font-size:12px}.step{background:#e4f3f0;color:#147e75;border-radius:20px;padding:4px 9px;font-size:11px;font-weight:800}
+    .form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field label{font-size:12px;font-weight:750;color:#3d5266}.field input,.field select{border:1px solid #ccd9e3;background:#fff;border-radius:8px;padding:11px 12px;min-height:43px;color:#203245;width:100%;outline:none}.field input:focus,.field select:focus{border-color:#1f9a90;box-shadow:0 0 0 3px rgba(20,153,141,.12)}.field select:disabled{background:#f4f5f7;color:#82909d}
+    .actions{border-top:1px solid var(--line);padding-top:18px;margin-top:19px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}.check{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px}.check input{accent-color:#148e88;width:16px;height:16px}.buttonrow{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid transparent;border-radius:9px;padding:10px 17px;min-height:41px;font-size:13px;font-weight:750;display:inline-flex;gap:7px;align-items:center;justify-content:center}.primary{background:#117f79;color:#fff}.primary:hover:not(:disabled){background:#0e706a}.secondary{background:#fff;border-color:#cbd9e1;color:#244258}.secondary:hover:not(:disabled){background:#f0f8f9}.btn.outline{background:#f5f9fb;border-color:#d2e1e8;color:#2b5065}.btn .icon{font-size:17px;line-height:1}
+    .notice{display:flex;gap:10px;padding:12px 14px;border-radius:9px;margin:17px 0 0;background:#eaf4f7;border:1px solid #d2e9ed;color:#245465;font-size:13px}.notice.warning{border-color:#f2dfb4;background:#fff8ea;color:#805b17}.notice.error{border-color:#f1c9c9;background:#fff0f0;color:#9b3535}.notice.success{background:#eaf9f1;border-color:#bfebd3;color:#20684b}.notice .noticeico{font-weight:900}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.metric{background:#fff;border:1px solid var(--line);padding:17px 19px;border-radius:11px}.metric .label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}.metric .value{font-size:26px;letter-spacing:-.035em;font-weight:820;margin-top:4px;color:#142c42}.metric.teal .value{color:#0c8a80}
+    .results{padding:0;overflow:hidden}.resultshead{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--line)}.resultshead h2{font-size:17px;margin:0}.subtle{font-size:12px;color:var(--muted)}.pill{background:#e8f4f2;color:#086d65;font-size:11px;font-weight:750;padding:5px 9px;border-radius:30px}.tabrow{display:flex;gap:6px;overflow:auto;padding:12px 20px;border-bottom:1px solid var(--line)}.tab{white-space:nowrap;border:0;background:transparent;color:#5e7181;font-weight:750;font-size:12px;padding:8px 10px;border-radius:7px}.tab.active{color:#0b7975;background:#e9f6f4}
+    .tablewrap{overflow:auto;min-height:210px;max-height:560px}.datatable{width:100%;border-collapse:collapse;font-size:12px;min-width:1120px}.datatable thead{position:sticky;top:0;z-index:1}.datatable th{background:#f5f8fb;text-align:left;text-transform:uppercase;letter-spacing:.04em;color:#516678;font-size:10px;padding:13px 12px;border-bottom:1px solid #e0e6ee;white-space:nowrap}.datatable td{border-bottom:1px solid #edf1f4;padding:11px 12px;vertical-align:top}.datatable tbody tr:hover{background:#f9fcfc}.ruc{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:750;color:#157b6f}.name{font-weight:750;max-width:345px}.small{font-size:11px;color:var(--muted)}.tablebottom{padding:11px 20px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}.empty{padding:55px 20px;text-align:center;color:#758595}.empty .emptyicon{font-size:32px;margin-bottom:8px}
+    .footerinfo{display:grid;grid-template-columns:1fr 1fr;gap:18px}.footerinfo .panel{padding:20px 22px}.footerinfo h3{font-size:14px;margin:0 0 9px}.footerinfo p{margin:0 0 8px;color:#647489;font-size:12px}.footerinfo ul{padding-left:18px;margin:0;color:#647489;font-size:12px}.footerinfo li{margin-bottom:5px}
+    .progress{width:100%;height:7px;background:#e5edf1;border-radius:10px;overflow:hidden;margin:13px 0 6px}.progress span{display:block;background:#2a9e97;width:0%;height:100%;transition:width .3s}.hidden{display:none!important}.mono{font-family:ui-monospace,Consolas,monospace}.trim{max-width:270px;word-break:break-word}
+    @media(max-width:850px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics{grid-template-columns:repeat(2,1fr)}.topinner{align-items:start}.status{display:none}.footerinfo{grid-template-columns:1fr}}
+    @media(max-width:560px){.top{padding-top:20px}.top h1{font-size:28px}.form-grid{grid-template-columns:1fr}.formpanel{padding:17px}.actions{align-items:stretch}.buttonrow{width:100%}.btn{flex:1}.wrap{width:calc(100% - 24px)}.metric{padding:13px}.metric .value{font-size:23px}.resultshead{padding:14px}.tabrow{padding:9px}.eyebrow{margin-top:22px}}
+  </style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap topinner">
+    <div>
+      <div class="brand"><div class="brandmark">R</div> INTELIGENCIA TERRITORIAL <span style="opacity:.4;margin:0 5px">/</span> PERÚ</div>
+      <div class="eyebrow">Base pública de organizaciones</div>
+      <h1>Consulta de RUC por ubicación</h1>
+      <p>Municipalidades, gobiernos regionales, direcciones de Energía y Minas, ministerios, proyectos especiales y empresas. Búsqueda territorial con exportación a Excel.</p>
+    </div>
+    <div class="status"><strong><span class="dot" id="statusDot"></span><span id="statusText">Comprobando datos...</span></strong><span id="statusDate">GitHub Pages · Fuentes SUNAT y PCM</span></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel formpanel">
+    <div class="sectiontitle"><div><h2>Configurar búsqueda</h2><p>Los campos de provincia, distrito y nombre son opcionales.</p></div><span class="step">01 / FILTROS</span></div>
+    <div class="form-grid">
+      <div class="field"><label for="departamento">Departamento</label><select id="departamento"><option value="">Todos los departamentos</option></select></div>
+      <div class="field"><label for="provincia">Provincia (opcional)</label><select id="provincia"><option value="">Todas las provincias</option></select></div>
+      <div class="field"><label for="distrito">Distrito (opcional)</label><select id="distrito"><option value="">Todos los distritos</option></select></div>
+      <div class="field"><label for="modo">Buscar</label><select id="modo"><option value="ambos">Entidades públicas y empresas</option><option value="publicas" selected>Solo entidades públicas</option><option value="empresas">Solo empresas y personas jurídicas</option></select></div>
+      <div class="field"><label for="tipo">Tipo de entidad / empresa</label><select id="tipo"><option value="Todos">Todos</option><option>Municipalidades</option><option>Gobiernos regionales</option><option>Direcciones regionales de Energia y Minas</option><option>Ministerios</option><option>Proyectos especiales</option><option>Otras entidades publicas</option><option>Empresas y otras personas juridicas</option></select></div>
+      <div class="field"><label for="texto">Nombre o RUC contiene (opcional)</label><input id="texto" type="search" placeholder="Ej. PASTO GRANDE, 20519923182" autocomplete="off" /></div>
+    </div>
+    <div class="actions"><label class="check"><input id="activo" type="checkbox" checked /> Solo RUC activo, cuando SUNAT indique estado</label><div class="buttonrow"><button class="btn secondary" type="button" id="limpiar">Limpiar</button><button class="btn primary" type="button" id="buscar"><span class="icon">⌕</span> Buscar RUC</button></div></div>
+    <div id="notice" class="notice"><span class="noticeico">i</span><span id="noticeText">Cargando catálogos y comprobando el índice SUNAT...</span></div>
+    <div id="progressbox" class="hidden"><div class="progress"><span id="progressbar"></span></div><div class="subtle" id="progressText">Preparando...</div></div>
+  </section>
+  <section class="metrics" aria-label="Resumen de resultados">
+    <div class="metric teal"><div class="label">Coincidencias</div><div class="value" id="total">—</div></div>
+    <div class="metric"><div class="label">Proyectos especiales</div><div class="value" id="kProy">—</div></div>
+    <div class="metric"><div class="label">Entidades públicas</div><div class="value" id="kPub">—</div></div>
+    <div class="metric"><div class="label">Empresas</div><div class="value" id="kEmp">—</div></div>
+  </section>
+  <section class="panel results" id="resultados">
+    <div class="resultshead"><div><h2>Resultados encontrados</h2><div class="subtle" id="resultSubtitle">Realiza una búsqueda para consultar los registros.</div></div><div class="buttonrow"><button id="exportCsv" class="btn outline" disabled>↓ CSV</button><button id="exportXlsx" class="btn primary" disabled>↓ Descargar Excel</button></div></div>
+    <div class="tabrow" id="tabrow"><button class="tab active" data-tab="Todos">Todos</button><button class="tab" data-tab="Proyectos">Proyectos especiales</button><button class="tab" data-tab="Publicas">Entidades públicas</button><button class="tab" data-tab="Empresas">Empresas</button><button class="tab" data-tab="Sin_RUC">Sin RUC</button></div>
+    <div class="tablewrap"><table class="datatable"><thead><tr><th>RUC</th><th>Entidad / Razón social</th><th>Tipo</th><th>Departamento</th><th>Provincia</th><th>Distrito</th><th>Estado SUNAT</th><th>Identificación</th><th>Fuente</th></tr></thead><tbody id="tbody"><tr><td colspan="9"><div class="empty"><div class="emptyicon">⌕</div>Aún no se ha ejecutado ninguna búsqueda.</div></td></tr></tbody></table></div>
+    <div class="tablebottom" id="tablaNota">La exportación incluye más columnas y fuentes documentales.</div>
+  </section>
+  <section class="footerinfo">
+    <article class="panel"><h3>Origen y alcance de los datos</h3><p>Se utiliza el padrón reducido de SUNAT (RUC que empiezan por 20), directorios de entidades públicas de PCM y referencias documentales de proyectos especiales. La fecha de actualización se indica en la parte superior.</p><ul><li><a href="https://www.sunat.gob.pe/descargaPRR/mrc137_padron_reducido.html" target="_blank" rel="noopener noreferrer">SUNAT · Padrón reducido RUC</a></li><li><a href="https://www.datosabiertos.gob.pe/dataset/entidades-p%C3%BAblicas-registradas-en-el-portal-de-transparencia-est%C3%A1ndar-pte" target="_blank" rel="noopener noreferrer">PCM · Directorio de entidades públicas</a></li><li>Un proyecto puede tener un RUC propio, compartir el de una entidad o constar solo en referencias documentales.</li></ul></article>
+    <article class="panel"><h3>Consideraciones para la consulta</h3><p>La ubicación SUNAT corresponde al <b>domicilio fiscal</b>, que puede ser distinta del lugar donde opera la entidad. La ubicación de proyectos sin contraste SUNAT es referencial.</p><p>Una página estática no actualiza por sí sola el padrón: la actualización se realiza mediante GitHub Actions. Este buscador no consulta el estado del RUC en tiempo real.</p><p>Para evitar que el navegador se bloquee, una búsqueda conserva como máximo <b>250 000 registros exportables</b>. Si el filtro supera ese límite se informa expresamente.</p></article>
+  </section>
+</main>
+<script>
+'use strict';
+const DEPS={'01':'AMAZONAS','02':'ANCASH','03':'APURIMAC','04':'AREQUIPA','05':'AYACUCHO','06':'CAJAMARCA','07':'CALLAO','08':'CUSCO','09':'HUANCAVELICA',10:'HUANUCO',11:'ICA',12:'JUNIN',13:'LA LIBERTAD',14:'LAMBAYEQUE',15:'LIMA',16:'LORETO',17:'MADRE DE DIOS',18:'MOQUEGUA',19:'PASCO',20:'PIURA',21:'PUNO',22:'SAN MARTIN',23:'TACNA',24:'TUMBES',25:'UCAYALI'};
+const TYPE={PROY:'Proyectos especiales',MUNI:'Municipalidades',REG:'Gobiernos regionales',DREM:'Direcciones regionales de Energia y Minas',MIN:'Ministerios',OTHER:'Otras entidades publicas',EMP:'Empresas y otras personas juridicas'};
+const COLUMNS=['RUC','ENTIDAD / RAZON SOCIAL','TIPO DE ORGANIZACION','DEPARTAMENTO','PROVINCIA','DISTRITO','UBIGEO','DIRECCION','ESTADO RUC SUNAT','CONDICION DOMICILIO','TIPO DE UBICACION','GRADO DE IDENTIFICACION','FUENTE','FECHA DE EXTRACCION','OBSERVACIONES'];
+const PROYECTOS_INICIALES=[{"ruc":"20519923182","nombre":"PROYECTO ESPECIAL REGIONAL PASTO GRANDE","departamento":"MOQUEGUA","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PERPG","PASTO GRANDE"]},{"ruc":"20170639520","nombre":"PROYECTO ESPECIAL AFIANZAMIENTO Y AMPLIACION DE LOS RECURSOS HIDRICOS DE TACNA","departamento":"TACNA","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PET","PROYECTO ESPECIAL TACNA","RECURSOS HIDRICOS TACNA"]},{"ruc":"20148346055","nombre":"PROYECTO ESPECIAL OLMOS TINAJONES","departamento":"LAMBAYEQUE","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEOT","OLMOS TINAJONES"]},{"ruc":"20154477536","nombre":"PROYECTO ESPECIAL CHIRA PIURA","departamento":"PIURA","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww3.sunat.gob.pe/descarga/BueCont/BueCont1940.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PECHP","CHIRA PIURA"]},{"ruc":"20525662404","nombre":"PROYECTO ESPECIAL DE IRRIGACION E HIDROENERGETICO DEL ALTO PIURA","departamento":"PIURA","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://www.sunat.gob.pe/orientacion/coaEstado/entidadesInformantesCOA-Estado.pdf","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEIHAP","ALTO PIURA"]},{"ruc":"20278885420","nombre":"PROYECTO ESPECIAL TAMBO CCARACOCHA","departamento":"ICA","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet290.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PETACC","TAMBO CCARACOCHA"]},{"ruc":"20156058719","nombre":"PROYECTO ESPECIAL CHAVIMOCHIC","departamento":"LA LIBERTAD","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["CHAVIMOCHIC","PECH"]},{"ruc":"20164359701","nombre":"PROYECTO ESPECIAL CHINECAS","departamento":"ANCASH","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["CHINECAS"]},{"ruc":"20154446738","nombre":"PROYECTO ESPECIAL BINACIONAL PUYANGO TUMBES","departamento":"TUMBES","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEBPT","PUYANGO TUMBES"]},{"ruc":"20172237127","nombre":"PROYECTO ESPECIAL ALTO MAYO","departamento":"SAN MARTIN","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["ALTO MAYO"]},{"ruc":"20207736261","nombre":"PROYECTO ESPECIAL BINACIONAL DE DESARROLLO INTEGRAL DE LA CUENCA DEL RIO PUTUMAYO","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["RIO PUTUMAYO","BINACIONAL PUTUMAYO"]},{"ruc":"20162117379","nombre":"PROYECTO ESPECIAL BINACIONAL LAGO TITICACA","departamento":"PUNO","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PELT","LAGO TITICACA"]},{"ruc":"20503503639","nombre":"PROYECTO ESPECIAL DE INFRAESTRUCTURA DE TRANSPORTE NACIONAL - PROVIAS NACIONAL","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PROVIAS NACIONAL"]},{"ruc":"20606567694","nombre":"PROYECTO ESPECIAL DE INVERSION PUBLICA ESCUELAS BICENTENARIO","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["ESCUELAS BICENTENARIO"]},{"ruc":"20148168955","nombre":"PROYECTO ESPECIAL HUALLAGA CENTRAL Y BAJO MAYO","departamento":"SAN MARTIN","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["HUALLAGA CENTRAL Y BAJO MAYO"]},{"ruc":"20187384142","nombre":"PROYECTO ESPECIAL JAEN SAN IGNACIO BAGUA","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["JAEN SAN IGNACIO BAGUA","PEJSIB"]},{"ruc":"20156046974","nombre":"PROYECTO ESPECIAL JEQUETEPEQUE ZANA","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["JEQUETEPEQUE ZANA","PEJEZA"]},{"ruc":"20600378059","nombre":"PROYECTO ESPECIAL LEGADO","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet289.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["LEGADO"]},{"ruc":"20143122850","nombre":"PROYECTO ESPECIAL SIERRA CENTRO SUR","departamento":"AYACUCHO","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet290.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["SIERRA CENTRO SUR"]},{"ruc":"20162554167","nombre":"PROYECTO ESPECIAL MAJES SIGUAS - AUTODEMA","departamento":"AREQUIPA","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet28.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["AUTODEMA","AUTORIDAD AUTONOMA DE MAJES","MAJES SIGUAS"]},{"ruc":"20159311598","nombre":"PROYECTO ESPECIAL REGIONAL PLAN COPESCO","departamento":"CUSCO","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet280.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PLAN COPESCO","COPESCO"]},{"ruc":"20170258305","nombre":"PROYECTO ESPECIAL MADRE DE DIOS","departamento":"MADRE DE DIOS","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://www.gob.pe/institucion/pemd/informes-publicaciones/3660953-reglamento-interno-de-trabajo-rit-2016-pemd","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEMD","PROYECTO MADRE DE DIOS"]},{"ruc":"20204060623","nombre":"PROYECTO ESPECIAL PICHIS PALCAZU","departamento":"JUNIN","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://www.pepp.gob.pe/descargas/pvpc_covid_pepp.pdf","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEPP","PICHIS PALCAZU"]},{"ruc":"20202348654","nombre":"PROYECTO ESPECIAL ALTO HUALLAGA","departamento":"HUANUCO","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://www.ana.gob.pe/sites/default/files/normatividad/files/RD%20564-2024.pdf","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEAH","ALTO HUALLAGA"]},{"ruc":"20572268200","nombre":"PROYECTO ESPECIAL DATEM DEL MARANON ALTO AMAZONAS LORETO CONDORCANQUI","departamento":"LORETO","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://www.gob.pe/institucion/pedamaalc/informes-publicaciones/7170075-convenio-marco-de-cooperacion-interinstitucional-entre-el-pedamaalc-y-la-municipalidad-distrital-de-pastaza","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PEDAMAALC","DATEM DEL MARANON"]},{"ruc":"20556512303","nombre":"PROYECTOS ESPECIALES DEL PLIEGO 003 - MINISTERIO DE CULTURA","departamento":"","provincia":"","distrito":"","ubigeo":"","direccion":"","estado":"","condicion":"","tipo":"Proyectos especiales","fuente":"https://ww1.sunat.gob.pe/descarga/AgentRet/AgenRet290.html","identificacion":"RUC documentado; sin contraste SUNAT en esta web","observaciones":"Ubicacion departamental referencial; no equivale al domicilio fiscal.","alias":["PROYECTOS ESPECIALES CULTURA"]}];
+const MAX_RESULTS=250000,MAX_VISIBLE=200;
+const el=id=>document.getElementById(id);const fmt=n=>(+n||0).toLocaleString('es-PE');
+const normal=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim().toUpperCase();
+let manifest={},geo={},publicas=[],proyectos=[],publicasPorRuc=new Map(),proyectosPorRuc=new Map(),resultados=[],totalEncontrados=0,salidaIncompleta=false,activeTab='Todos',searching=false,lastParams={};
+const fetchJson=async(path,defaultValue)=>{try{const r=await fetch(path+'?v=1',{cache:'no-store'});if(!r.ok)throw Error(r.status);return await r.json()}catch(e){console.warn('No disponible',path,e);return defaultValue}};
+function aviso(s,t='info'){const node=el('notice');node.className='notice '+(t==='info'?'':t);el('noticeText').textContent=s;node.querySelector('.noticeico').textContent=t==='error'?'×':t==='success'?'✓':t==='warning'?'!':'i'}
+function busy(v){searching=v;for(const id of ['buscar','limpiar','exportCsv','exportXlsx'])el(id).disabled=v||(id.startsWith('export')&&!resultados.length);el('progressbox').classList.toggle('hidden',!v);if(!v)el('progressbar').style.width='0%'}
+function progreso(p,s){el('progressbar').style.width=Math.min(100,Math.max(0,p))+'%';el('progressText').textContent=s}
+function fillSelect(select,items,placeholder){const val=select.value;select.replaceChildren(new Option(placeholder,''));for(const text of items)select.add(new Option(text,text));if(items.includes(val))select.value=val}
+function actualizarProvincias(){const dep=el('departamento').value,prov=el('provincia');const lista=new Set();for(const [ub,info] of Object.entries(geo)){if(dep&&ub.slice(0,2)!==dep)continue;if(info[1])lista.add(info[1])}fillSelect(prov,[...lista].sort((a,b)=>a.localeCompare(b,'es')),'Todas las provincias');actualizarDistritos()}
+function actualizarDistritos(){const dep=el('departamento').value,prov=el('provincia').value,dist=el('distrito');const lista=new Set();for(const [ub,info] of Object.entries(geo)){if(dep&&ub.slice(0,2)!==dep)continue;if(prov&&info[1]!==prov)continue;if(info[2])lista.add(info[2])}fillSelect(dist,[...lista].sort((a,b)=>a.localeCompare(b,'es')),'Todos los distritos')}
+function categorizar(name){const n=normal(name);if(/\bD\.?R\.?E\.?M\.?\b/.test(n)||/(DIRECCION|GERENCIA) REGIONAL DE (ENERGIA Y MINAS|MINAS Y ENERGIA)/.test(n))return TYPE.DREM;if(/\bPROY(ECTO)?\.? ESP(ECIAL)?\b/.test(n)||n.includes('PROYECTOS ESPECIALES'))return TYPE.PROY;if(n.includes('MUNICIPALIDAD'))return TYPE.MUNI;if(n.includes('GOBIERNO REGIONAL')||n.startsWith('REGION '))return TYPE.REG;if(/\bMINISTERIO (DE|DEL)\b/.test(n))return TYPE.MIN;return ''}
+function provinciaDe(ub){return geo[ub]?.[1]||''}function distritoDe(ub){return geo[ub]?.[2]||''}
+function lugar(ub,dep='',prov='',dist=''){
+  const g=geo[ub];return {departamento:g?.[0]||(ub?.slice(0,2) in DEPS?DEPS[ub.slice(0,2)]:'')||dep||'',provincia:g?.[1]||prov||'',distrito:g?.[2]||dist||''};
+}
+function coincideGeo(r,allowReference=false){const dep=el('departamento').value,prov=el('provincia').value,dist=el('distrito').value;
+  if(dep&&normal(r.departamento)!==DEPS[dep]){
+    if(!(allowReference&&!prov&&!dist&&normal(r.departamento_referencial)===DEPS[dep]))return false;
+  }
+  if(prov&&normal(r.provincia)!==normal(prov))return false;
+  if(dist&&normal(r.distrito)!==normal(dist))return false;
+  return true;
+}
+function coincideTexto(r,ref){const bus=normal(el('texto').value);if(!bus)return true;
+  const names=[r.nombre,r.ruc,ref?.nombre,...(ref?.alias||[])];return names.some(x=>x&&normal(x).includes(bus));
+}
+function coincideTipo(r){const tipo=el('tipo').value;return tipo==='Todos'||r.tipo===tipo}
+function coincideEstado(r){return !(el('activo').checked&&r.estado&&normal(r.estado)!=='ACTIVO')}
+function baseRecord(overrides){return {ruc:'',nombre:'',tipo:'',departamento:'',provincia:'',distrito:'',ubigeo:'',direccion:'',estado:'',condicion:'',ubicacion:'',identificacion:'',fuente:'',observaciones:'',...overrides}}
+function agregar(r,bucket){totalEncontrados++;if(resultados.length<MAX_RESULTS){resultados.push({...r,bucket})}else salidaIncompleta=true}
+function datosProyecto(p){
+  const ubi=p.ubigeo||'',geoFis=lugar(ubi,p.domicilio_fiscal_departamento||p.departamento,p.provincia,p.distrito);
+  const hasFiscal=Boolean(p.estado&&ubi);
+  const registro=baseRecord({...p, ...geoFis, tipo:TYPE.PROY,
+    ubicacion:hasFiscal?'Domicilio fiscal SUNAT':'Departamento referencial de adscripción',
+    identificacion:p.identificacion||'Referencia documental no contrastada',
+    observaciones:p.observaciones||'',fuente:p.fuente||'Referencia documental'});
+  registro.departamento_referencial=p.departamento;
+  const codigo=el('departamento').value;
+  // Admitir busqueda departamental por adscripcion, sin inventar provincia ni distrito.
+  if(codigo&&!el('provincia').value&&!el('distrito').value&&registro.departamento!==DEPS[codigo]&&normal(p.departamento)===DEPS[codigo]){
+    registro.departamento=p.departamento;registro.provincia='';registro.distrito='';registro.ubigeo='';registro.direccion='';
+    registro.ubicacion='Departamento referencial de adscripción';registro.observaciones=(registro.observaciones?registro.observaciones+' · ':'')+'La sede fiscal SUNAT puede estar en otra ubicación.';
+  }
+  return registro;
+}
+function aRecordSunat(row){const [ruc,nombre,estado,condicion,ubigeo,direccion]=row;const ubic=lugar(ubigeo);const refPro=proyectosPorRuc.get(ruc),refPub=publicasPorRuc.get(ruc);
+  const inferred=categorizar(nombre);const cat=refPro?TYPE.PROY:refPub?(refPub.tipo||TYPE.OTHER):inferred;
+  const isPublic=Boolean(refPro||refPub||inferred);
+  const tipo=isPublic?(cat||TYPE.OTHER):TYPE.EMP;
+  return baseRecord({ruc,nombre:refPro?.nombre||refPub?.nombre||nombre,tipo,...ubic,ubigeo,direccion,estado,condicion,
+    ubicacion:'Domicilio fiscal SUNAT',identificacion:refPro?'RUC SUNAT y referencia proyecto':refPub?'RUC SUNAT y directorio PCM':isPublic?'Clasificación orientativa por razón social':'RUC 20 SUNAT',
+    fuente:'https://www.sunat.gob.pe/descargaPRR/mrc137_padron_reducido.html',
+    observaciones:inferred&&!refPro&&!refPub?'Verificar carácter público de la entidad.':''});
+}
+function necesitaPadron(){const modo=el('modo').value,tipo=el('tipo').value;return modo==='empresas'||(modo==='ambos'&&(tipo==='Todos'||tipo===TYPE.EMP))}
+function debeEscanear(){return Boolean(manifest.sunat?.disponible&&necesitaPadron())}
+async function leerGzipNdjson(url,onRecord){
+  const respuesta=await fetch(url,{cache:'force-cache'});if(!respuesta.ok)throw new Error('No se pudo cargar '+url+' (HTTP '+respuesta.status+')');
+  if(!respuesta.body||typeof DecompressionStream==='undefined')throw new Error('Tu navegador no permite leer archivos comprimidos; usa Chrome/Edge/Firefox actualizado.');
+  const reader=respuesta.body.pipeThrough(new DecompressionStream('gzip')).pipeThrough(new TextDecoderStream()).getReader();
+  let resto='',leidas=0;
+  while(true){const {done,value}=await reader.read();if(done)break;resto+=value;
+    let next;
+    while((next=resto.indexOf('\n'))>=0){const s=resto.slice(0,next);resto=resto.slice(next+1);if(!s)continue;try{onRecord(JSON.parse(s))}catch(e){console.warn('Fila no legible',e)}leidas++}
+    if(leidas>0&&leidas%20000<300){await new Promise(resolve=>requestAnimationFrame(resolve))}
+  }
+  if(resto.trim()){onRecord(JSON.parse(resto));leidas++}
+  return leidas;
+}
+async function buscar(){if(searching)return;
+  const modo=el('modo').value,tipo=el('tipo').value;
+  if(modo==='empresas'&&tipo!=='Todos'&&tipo!==TYPE.EMP){aviso('Selecciona "Todos" o "Empresas y otras personas jurídicas" para el modo de empresas.','warning');return}
+  if(modo==='publicas'&&tipo===TYPE.EMP){aviso('Selecciona el modo "Solo empresas" o "Entidades públicas y empresas" para esa categoría.','warning');return}
+  if(necesitaPadron()&&!manifest.sunat?.disponible){aviso('La búsqueda de empresas todavía no está activada. En GitHub ejecuta Actions → Actualizar padrón y publicar web. El catálogo de proyectos sí está disponible.','warning');return}
+  if((el('provincia').value||el('distrito').value)&&!Object.keys(geo).length){aviso('Falta el catálogo de ubigeos. Ejecuta la actualización desde GitHub Actions.','error');return}
+  busy(true);resultados=[];totalEncontrados=0;salidaIncompleta=false;activeTab='Todos';lastParams={departamento:el('departamento').selectedOptions[0]?.text||'Todos',provincia:el('provincia').value||'Todos',distrito:el('distrito').value||'Todos',modo:el('modo').selectedOptions[0].text,tipo,nombre:el('texto').value||'(sin filtro)'};
+  try{
+    const projectMatches=new Set();const keys=new Set();const fecha=new Date().toLocaleString('es-PE');
+    const addUnique=(r,bucket)=>{const clave=[r.ruc||normal(r.nombre),r.departamento,r.provincia,r.distrito,bucket].join('|');if(keys.has(clave))return;keys.add(clave);agregar(r,bucket)};
+    let archivos=0,completados=0;
+    if(debeEscanear()){
+      const ds=el('departamento').value?[el('departamento').value]:Object.keys(manifest.departamentos||{}).sort();
+      const metadatos=ds.map(dep=>({dep,...manifest.departamentos?.[dep]})).filter(m=>m.archivo&&m.registros>0);archivos=metadatos.length;
+      for(const m of metadatos){
+        progreso(archivos?completados*100/archivos:0,'Leyendo RUC 20 de '+DEPS[m.dep]+'...');
+        await leerGzipNdjson('./data/'+m.archivo,(fila)=>{
+          const r=aRecordSunat(fila),isPublic=r.tipo!==TYPE.EMP;
+          if(modo==='empresas'&&isPublic)return;
+          if(modo==='ambos'&&tipo!==TYPE.EMP&&tipo!=='Todos'&&r.tipo!==tipo)return;
+          if(modo==='empresas'&&tipo!==TYPE.EMP&&tipo!=='Todos')return;
+          if(!coincideEstado(r)||!coincideGeo(r)||!coincideTexto(r,proyectosPorRuc.get(r.ruc))||!coincideTipo(r))return;
+          const bucket=r.tipo===TYPE.PROY?'Proyectos':isPublic?'Publicas':'Empresas';
+          if(bucket==='Proyectos')projectMatches.add(r.ruc);
+          addUnique(r,bucket);
+        });
+        completados++;progreso(completados*100/(archivos||1),'Procesado '+DEPS[m.dep]+' · '+fmt(totalEncontrados)+' coincidencias');
+        await new Promise(resolve=>requestAnimationFrame(resolve));
+      }
+    }
+    if(modo!=='empresas'){
+      progreso(95,'Agregando entidades públicas y proyectos especiales...');
+      for(const p of publicas){
+        const isProject=p.tipo===TYPE.PROY||proyectosPorRuc.has(p.ruc);
+        if(isProject&&p.ruc&&proyectosPorRuc.has(p.ruc))continue;const u=lugar(p.ubigeo,p.departamento,p.provincia,p.distrito);
+        const r=baseRecord({...p,...u,ubicacion:'Sede registrada por PCM',identificacion:p.identificacion||'Registro directorio PCM',fuente:p.fuente||manifest.pcm?.fuente||''});
+        if(!coincideGeo(r)||!coincideTexto(r)||!coincideTipo(r)||!coincideEstado(r))continue;
+        addUnique(r,r.ruc?(isProject?'Proyectos':'Publicas'):'Sin_RUC');
+      }
+      for(const p of proyectos){
+        const r=datosProyecto(p);
+        if(!coincideGeo(r,true)||!coincideTexto(r,p)||!coincideTipo(r)||!coincideEstado(r))continue;
+        if(projectMatches.has(r.ruc))continue;
+        addUnique(r,'Proyectos');
+      }
+    }
+    progreso(100,'Búsqueda completada.');
+    render();
+    let message=`Se encontraron ${fmt(totalEncontrados)} registros. ${fmt(resultados.length)} disponibles para descargar.`;
+    if(salidaIncompleta)message+=' ADVERTENCIA: se superó el límite de 250 000 filas del navegador; el Excel/CSV será PARCIAL. Filtra mejor la búsqueda.';
+    if(!manifest.sunat?.disponible)message+=' Sin padrón SUNAT: solo resultados referenciales y del directorio, no una búsqueda empresarial completa.';
+    if(!manifest.pcm?.disponible)message+=' Directorio PCM no disponible; pueden faltar entidades públicas.';
+    aviso(message,salidaIncompleta||!manifest.sunat?.disponible?'warning':'success');
+  }catch(e){console.error(e);render();aviso('La búsqueda no pudo completarse: '+e.message+'. Los resultados mostrados pueden estar incompletos.','error');salidaIncompleta=true}
+  finally{busy(false);}
+}
+function countBucket(b){return resultados.filter(r=>r.bucket===b).length}
+function render(){el('total').textContent=fmt(totalEncontrados);el('kProy').textContent=fmt(countBucket('Proyectos'));el('kPub').textContent=fmt(countBucket('Publicas')+countBucket('Sin_RUC'));el('kEmp').textContent=fmt(countBucket('Empresas'));
+  el('resultSubtitle').textContent=(salidaIncompleta?'Muestra parcial: ':'')+fmt(resultados.length)+' filas almacenadas · Domicilio fiscal salvo indicación en el registro';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));
+  const rows=activeTab==='Todos'?resultados:resultados.filter(r=>r.bucket===activeTab);
+  const tbody=el('tbody');tbody.replaceChildren();
+  if(!rows.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=9;td.innerHTML='<div class="empty"><div class="emptyicon">⌕</div>No hay coincidencias con estos filtros.</div>';tr.append(td);tbody.append(tr)}
+  else{
+    const fragment=document.createDocumentFragment();
+    for(const r of rows.slice(0,MAX_VISIBLE)){
+      const tr=document.createElement('tr');
+      const columns=[r.ruc||'—',r.nombre,r.tipo,r.departamento,r.provincia||'—',r.distrito||'—',r.estado||'Sin contraste',r.identificacion||'—'];
+      for(let i=0;i<columns.length;i++){
+        const td=document.createElement('td');td.textContent=columns[i];if(i===0)td.className='ruc';if(i===1)td.className='name';if(i===7)td.className='small trim';tr.append(td);
+      }
+      const td=document.createElement('td');
+      if(/^https?:\/\//i.test(r.fuente||'')){const a=document.createElement('a');a.href=r.fuente;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir fuente';td.append(a)}else{td.textContent=(r.fuente||'—').slice(0,40)}tr.append(td);fragment.append(tr);
+    }tbody.append(fragment)
+  }
+  el('tablaNota').textContent='Se muestran '+fmt(Math.min(rows.length,MAX_VISIBLE))+' de '+fmt(rows.length)+' filas de esta pestaña. La exportación incluye todas las filas almacenadas ('+fmt(resultados.length)+'), fuentes y observaciones.'+(salidaIncompleta?' ATENCIÓN: exportación parcial por límite de navegador.':'');
+  el('exportCsv').disabled=searching||!resultados.length;el('exportXlsx').disabled=searching||!resultados.length;
+}
+const rowsToArray=r=>[r.ruc||'',r.nombre||'',r.tipo||'',r.departamento||'',r.provincia||'',r.distrito||'',r.ubigeo||'',r.direccion||'',r.estado||'',r.condicion||'',r.ubicacion||'',r.identificacion||'',r.fuente||'',manifest.actualizado||new Date().toISOString(),r.observaciones||''];
+function csvSafe(s){const str=String(s??'');return /^[=+@\-]/.test(str.trim())?"'"+str:str}
+function generarCsv(){const lines=[COLUMNS,...resultados.map(rowsToArray)].map(row=>row.map(v=>'"'+csvSafe(v).replace(/"/g,'""')+'"').join(';'));const blob=new Blob(['\uFEFF',lines.join('\r\n')],{type:'text/csv;charset=utf-8'});download(blob,'RUC_Peru_'+new Date().toISOString().slice(0,10)+'.csv')}
+function download(blob,filename){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
+// Exportador XLSX independiente de CDN: genera un ZIP OOXML válido en el navegador.
+const encoder=new TextEncoder();
+const crcTable=(()=>{const table=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);table[n]=c>>>0}return table})();
+function crcActual(crc,bytes){for(const b of bytes)crc=crcTable[(crc^b)&255]^(crc>>>8);return crc>>>0}
+function escapeXml(s){return String(s??'').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function colName(n){let s='';while(n){n--;s=String.fromCharCode(65+n%26)+s;n=Math.floor(n/26)}return s}
+function rawXml(chunks){const encoded=chunks.map(v=>encoder.encode(v));let crc=0xFFFFFFFF,size=0;for(const c of encoded){crc=crcActual(crc,c);size+=c.byteLength}return {blob:new Blob(encoded),crc:(crc^0xFFFFFFFF)>>>0,size}}
+function sheetXml(rows,wide){
+  const pieces=['<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',
+    '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">',
+    '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>',
+    wide?'<cols>'+[16,50,39,20,23,25,13,48,22,22,35,46,48,28,55].map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join('')+'</cols>':'<cols><col min="1" max="1" width="33" customWidth="1"/><col min="2" max="2" width="95" customWidth="1"/></cols>',
+    '<sheetData>'];
+  // Fragmentos parciales: no crear un único texto gigante para exportaciones grandes.
+  let chunk='';
+  rows.forEach((row,idx)=>{
+    const nr=idx+1;let xml=`<row r="${nr}">`;
+    row.forEach((val,i)=>{
+      const cell=colName(i+1)+nr;
+      const style=idx===0?' s="1"':wide&&i===0?' s="2"':'';
+      xml+=`<c r="${cell}"${style} t="inlineStr"><is><t xml:space="preserve">${escapeXml(val)}</t></is></c>`;
+    });
+    xml+='</row>';chunk+=xml;
+    if(chunk.length>350000){pieces.push(chunk);chunk=''}
+  });
+  if(chunk)pieces.push(chunk);
+  pieces.push('</sheetData><autoFilter ref="A1:'+colName(rows[0]?.length||2)+rows.length+'"/></worksheet>');
+  return rawXml(pieces);
+}
+function staticXml(s){return rawXml([s])}
+function unixDosDate(d){const y=Math.max(1980,d.getFullYear());return {date:((y-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate(),time:(d.getHours()<<11)|(d.getMinutes()<<5)|Math.floor(d.getSeconds()/2)}}
+async function xlsxZip(entries){
+  const now=unixDosDate(new Date());let offset=0;const parts=[],centers=[];
+  for(const entry of entries){
+    const n=encoder.encode(entry.name),orig=entry.data;
+    let method=0,compressed=orig.blob;
+    if(typeof CompressionStream!=='undefined'){
+      try{compressed=await new Response(orig.blob.stream().pipeThrough(new CompressionStream('deflate-raw'))).blob();method=8}
+      catch(e){console.warn('Compresion no disponible; ZIP sin compresion',e);compressed=orig.blob;method=0}
+    }
+    const size=compressed.size;
+    const local=new Uint8Array(30+n.length),v=new DataView(local.buffer);
+    v.setUint32(0,0x04034b50,true);v.setUint16(4,20,true);v.setUint16(6,0,true);v.setUint16(8,method,true);
+    v.setUint16(10,now.time,true);v.setUint16(12,now.date,true);v.setUint32(14,orig.crc,true);
+    v.setUint32(18,size,true);v.setUint32(22,orig.size,true);v.setUint16(26,n.length,true);v.setUint16(28,0,true);local.set(n,30);
+    parts.push(local,compressed);
+    const center=new Uint8Array(46+n.length),c=new DataView(center.buffer);
+    c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);
+    c.setUint16(8,0,true);c.setUint16(10,method,true);c.setUint16(12,now.time,true);c.setUint16(14,now.date,true);
+    c.setUint32(16,orig.crc,true);c.setUint32(20,size,true);c.setUint32(24,orig.size,true);c.setUint16(28,n.length,true);
+    c.setUint16(30,0,true);c.setUint16(32,0,true);c.setUint16(34,0,true);c.setUint16(36,0,true);
+    c.setUint32(38,0,true);c.setUint32(42,offset,true);center.set(n,46);centers.push(center);
+    offset+=local.byteLength+size;
+  }
+  const centerSize=centers.reduce((n,c)=>n+c.length,0);
+  const end=new Uint8Array(22),v=new DataView(end.buffer);v.setUint32(0,0x06054b50,true);
+  v.setUint16(4,0,true);v.setUint16(6,0,true);v.setUint16(8,centers.length,true);v.setUint16(10,centers.length,true);
+  v.setUint32(12,centerSize,true);v.setUint32(16,offset,true);v.setUint16(20,0,true);
+  return new Blob([...parts,...centers,end],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+}
+function excelMetadata(sheets){
+  const types='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+
+    '<Default Extension="xml" ContentType="application/xml"/>'+
+    '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'+
+    '<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'+
+    sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')+'</Types>';
+  const rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+  const wb='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'+
+    '<bookViews><workbookView activeTab="0"/></bookViews><sheets>'+sheets.map((s,i)=>`<sheet name="${escapeXml(s.name)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join('')+'</sheets></workbook>';
+  const wbrels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join('')+
+    `<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;
+  const styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
+    '<fonts count="2"><font><sz val="11"/><name val="Aptos"/></font><font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Aptos"/></font></fonts>'+
+    '<fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF17324D"/><bgColor indexed="64"/></patternFill></fill></fills>'+
+    '<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>'+ 
+    '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>'+ 
+    '<cellXfs count="3"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'+ 
+    '<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFill="1" applyFont="1"/>'+ 
+    '<xf numFmtId="49" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/></cellXfs>'+ 
+    '<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+  return [['[Content_Types].xml',types],['_rels/.rels',rels],['xl/workbook.xml',wb],['xl/_rels/workbook.xml.rels',wbrels],['xl/styles.xml',styles]];
+}
+async function generarXlsx(){if(searching||!resultados.length)return;
+  busy(true);progreso(4,'Construyendo libro Excel...');
+  try{
+    const sheets=[];
+    sheets.push({name:'Resumen',wide:false,rows:[['INDICADOR','VALOR'],['Fecha de actualización SUNAT',manifest.actualizado||'Sin actualizar'],['RUC SUNAT procesados',fmt(manifest.sunat?.ruc20)],['Total coincidencias',fmt(totalEncontrados)],['Filas exportadas',fmt(resultados.length)],['Resultado parcial',salidaIncompleta?'SI - FILTRAR MAS':'NO'],...Object.entries(lastParams).map(([k,v])=>[k,v]),['Notas','RUC 20 / persona jurídica. RUC sin SUNAT contrastado puede ser solo una referencia documental.']]});
+    for(const [bucket,hoja] of [['Proyectos','Proyectos'],['Publicas','Publicas'],['Empresas','Empresas'],['Sin_RUC','Sin_RUC']]){
+      const arr=resultados.filter(r=>r.bucket===bucket);
+      if(!arr.length)continue;
+      for(let p=0;p<arr.length;p+=90000){sheets.push({name:hoja+'_'+(Math.floor(p/90000)+1),wide:true,rows:[COLUMNS,...arr.slice(p,p+90000).map(rowsToArray)]})}
+    }
+    sheets.push({name:'Fuentes',wide:false,rows:[['FUENTE','URL / OBSERVACIONES'],['SUNAT',manifest.sunat?.fuente||'https://www.sunat.gob.pe/descargaPRR/mrc137_padron_reducido.html'],['PCM',manifest.pcm?.fuente||'https://www.datosabiertos.gob.pe/'],['Ubigeos','https://github.com/RitchieRD/ubigeos-peru-data'],['Proyectos especiales','Fuentes documentales por fila. Algunas referencias no representan domicilio fiscal ni estado actual.'],['Fecha',manifest.actualizado||'No actualizado']]} );
+    const entries=[];
+    for(const [name,xml] of excelMetadata(sheets))entries.push({name,data:staticXml(xml)});
+    for(let i=0;i<sheets.length;i++){progreso(7+66*i/sheets.length,'Generando hoja: '+sheets[i].name+' ('+fmt(sheets[i].rows.length-1)+' filas)');
+      entries.push({name:'xl/worksheets/sheet'+(i+1)+'.xml',data:sheetXml(sheets[i].rows,sheets[i].wide)});
+      await new Promise(resolve=>setTimeout(resolve,0));
+    }
+    progreso(76,'Comprimiendo el archivo Excel...');const blob=await xlsxZip(entries);progreso(100,'Archivo Excel listo');
+    download(blob,'Busqueda_RUC_Peru_'+new Date().toISOString().slice(0,10)+'.xlsx');
+    aviso('Archivo Excel descargado ('+fmt(resultados.length)+' registros).'+(salidaIncompleta?' Advertencia: resultado parcial.':''),salidaIncompleta?'warning':'success');
+  }catch(e){console.error(e);aviso('No se pudo generar XLSX: '+e.message+'. Puedes exportar en CSV.','error')}
+  finally{busy(false)}
+}
+async function iniciar(){
+  for(const [cod,nombre] of Object.entries(DEPS))el('departamento').add(new Option(nombre,cod));
+  el('departamento').value='18'; // Moquegua como ejemplo; el usuario puede escoger cualquier departamento.
+  [manifest,geo,publicas,proyectos]=await Promise.all([
+    fetchJson('./data/manifest.json',{}),fetchJson('./data/ubigeos.json',{}),fetchJson('./data/publicas.json',[]),fetchJson('./data/proyectos.json',PROYECTOS_INICIALES)]);
+  publicasPorRuc=new Map(publicas.filter(p=>p.ruc).map(p=>[p.ruc,p]));
+  proyectosPorRuc=new Map(proyectos.filter(p=>p.ruc).map(p=>[p.ruc,p]));
+  actualizarProvincias();
+  const completo=Boolean(manifest.sunat?.disponible);el('statusText').textContent=completo?'Índice SUNAT habilitado':'Catálogo referencial activo';el('statusDot').classList.toggle('ok',completo);
+  const date=manifest.actualizado?new Date(manifest.actualizado).toLocaleString('es-PE',{dateStyle:'medium',timeStyle:'short',timeZone:'America/Lima'}):'Sin actualización SUNAT';
+  el('statusDate').textContent=(completo?'Datos preparados: ':'Última actualización: ')+date;
+  const pc=manifest.pcm?.disponible?'PCM habilitado':'PCM sin cargar';
+  aviso(completo?'Consulta empresarial disponible (RUC 20). '+pc+'. Proyectos en catálogo: '+fmt(proyectos.length)+'.':
+    'Web publicada en modo inicial: '+fmt(proyectos.length)+' proyectos con RUC referenciales. Para consultar todas las empresas, habilita GitHub Actions y ejecuta «Actualizar padrón y publicar web».',completo?'info':'warning');
+  el('departamento').addEventListener('change',actualizarProvincias);
+  el('provincia').addEventListener('change',actualizarDistritos);
+  el('buscar').addEventListener('click',buscar);
+  el('texto').addEventListener('keydown',e=>{if(e.key==='Enter')buscar()});
+  el('limpiar').addEventListener('click',()=>{el('departamento').value='';el('provincia').value='';el('distrito').value='';actualizarProvincias();el('texto').value='';el('tipo').value='Todos';el('modo').value='publicas';el('activo').checked=true});
+  document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>{activeTab=btn.dataset.tab;render()}));
+  el('exportCsv').addEventListener('click',()=>{if(!searching&&resultados.length)generarCsv()});
+  el('exportXlsx').addEventListener('click',generarXlsx);
+}
+iniciar().catch(e=>{console.error(e);aviso('No se pudo iniciar la aplicación: '+e.message,'error')});
+</script>
+</body>
+</html>
