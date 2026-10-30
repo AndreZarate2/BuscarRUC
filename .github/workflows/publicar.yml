@@ -1,1 +1,66 @@
+name: Actualizar padron y publicar web
 
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Lunes, 09:00 UTC = 04:00 Lima (UTC-5)
+    - cron: '0 9 * * 1'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  compilar_y_publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar dependencias de preparacion
+        run: python -m pip install --disable-pip-version-check requests beautifulsoup4
+      - name: Descargar SUNAT y preparar datos por departamento
+        run: python scripts/preparar_datos.py
+      - name: Verificar salida y preparar sitio
+        shell: bash
+        run: |
+          test -f index.html
+          test -f data/manifest.json
+          test -f data/proyectos.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('data/manifest.json').read_text())
+          if not m['sunat']['disponible']:
+              raise SystemExit('Se detiene publicacion: no se genero padron SUNAT completo')
+          print('RUC 20 indexados:', m['sunat']['ruc20'])
+          print('Tamano del sitio (MB):',round(sum(p.stat().st_size for p in Path('data').rglob('*') if p.is_file())/1024**2,2))
+          PY
+      - name: Preparar únicamente archivos públicos
+        run: |
+          mkdir -p _site
+          cp index.html .nojekyll _site/
+          cp -a data _site/
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Empaquetar sitio estatico
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+      - name: Publicar GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
